@@ -101,9 +101,11 @@
 					<ul class="actions">
                         <li><a href="#one" class="button special scrolly" style="background-color:#339966">Start By Saying "Alexa, Transcribe"</a></li>
 					</ul>
+<!--
 					<span id="num_clients">
 					    Number of Users: 0
 					</span>
+-->
 					<div id="info">
                         <p id="info_start"></p>
                         <p id="info_speak_now">Speak now.</p>
@@ -366,7 +368,7 @@ function showButtons(style) {
     transports: ['websocket'],
     'force new connection': true
   };
-  var socket = io.connect('https://567334d1.ngrok.io',options);
+  var socket = io.connect('https://300af425.ngrok.io/',options);
   socket.on('connect', function() {
       console.log('Connected');
   });
@@ -379,10 +381,10 @@ function showButtons(style) {
     startButton();
     });
     
-    socket.on('update_client_count', function(msg) {
-      console.log('updated');
-        document.getElementById("num_clients").innerHTML="Number of Users: "+msg;
-    });
+//    socket.on('update_client_count', function(msg) {
+//      console.log('updated');
+//        document.getElementById("num_clients").innerHTML="Number of Users: "+msg;
+//    });
 </script>
 	</body>
 </html>
