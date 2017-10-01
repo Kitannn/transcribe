@@ -99,8 +99,11 @@
 				</header>
 				<div class="container" style="top:400px">
 					<ul class="actions">
-                        <li><a href="#one" class="button special scrolly" onclick="startButton(event)">Manually Start Recording</a></li>
+                        <li><a href="#one" class="button special scrolly" style="background-color:#339966">Start By Saying "Alexa, Transcribe"</a></li>
 					</ul>
+					<span id="num_clients">
+					    Number of Users: 0
+					</span>
 					<div id="info">
                         <p id="info_start"></p>
                         <p id="info_speak_now">Speak now.</p>
@@ -117,18 +120,19 @@
                             go to chrome://settings/contentExceptions#media-stream</p>
                         <p id="info_upgrade">Web Speech API is not supported by this browser.
                             Upgrade to <a href="//www.google.com/chrome">Chrome</a>
-                            version 25 or later.</p>
+                            version 25 or later.</p>           
                     </div>
-                    <div class="right">
-<!--
-                        <button id="start_button" onclick="startButton(event)">
-                            <img id="start_img" src="images/mic.gif" alt="Start"></button>
--->
-                    </div>
+
                     <div id="results">
                         <span id="final_span" class="final"></span>
                         <span id="interim_span" class="interim"></span>
                         <p>
+                    </div>
+                    <div>
+                        <br />
+                        <ul class="actions">
+                        <li><a href="#one" class="button special scrolly" onclick="startButton(event)">Manually Start Recording</a></li>
+					</ul>
                     </div>
                     <div class="center">
                     <p>
@@ -141,13 +145,13 @@
                 </div>
             </section>
 
-			<script src="./assets/js/jquery.min.js"></script>
-			<script src="./assets/js/jquery.scrollex.min.js"></script>
-			<script src="./assets/js/jquery.scrolly.min.js"></script>
-			<script src="./assets/js/skel.min.js"></script>
-			<script src="./assets/js/util.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="./assets/js/main.js"></script>
+			<script src="assets/js/main.js"></script>
 			<script>
 var langs =
 [['Afrikaans',       ['af-ZA']],
@@ -374,7 +378,11 @@ function showButtons(style) {
       console.log('stopped');
     startButton();
     });
+    
+    socket.on('update_client_count', function(msg) {
+      console.log('updated');
+        document.getElementById("num_clients").innerHTML="Number of Users: "+msg;
+    });
 </script>
-  </body>
+	</body>
 </html>
-
