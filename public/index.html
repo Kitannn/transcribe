@@ -368,7 +368,7 @@ function showButtons(style) {
     transports: ['websocket'],
     'force new connection': true
   };
-  var socket = io.connect('https://eab16acb.ngrok.io',options);
+  var socket = io.connect('https://transcribe-backend.herokuapp.com/',options);
   socket.on('connect', function() {
       console.log('Connected');
   });
